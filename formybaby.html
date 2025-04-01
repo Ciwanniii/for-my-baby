@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <style>
+        body {
+            background-color: #ffebf0;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .letter {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: inline-block;
+            max-width: 400px;
+        }
+        .game-container {
+            position: relative;
+            width: 100vw;
+            height: 300px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: red;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .score {
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #d6336c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="letter">
+            <h2>Hai babyyyyyy,</h2>
+            <p>I loveee u my sweeet baby boy, mwah catch those hearts now >:3💕</p>
+        </div>
+        <div class="game-container" id="gameContainer"></div>
+        <div class="score">Score: <span id="score">0</span></div>
+    </div>
+
+    <script>
+        let score = 0;
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            document.getElementById("gameContainer").appendChild(heart);
+            
+            let x = Math.random() * (window.innerWidth - 50);
+            let y = Math.random() * 200;
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+            
+            heart.addEventListener("click", function() {
+                score++;
+                document.getElementById("score").innerText = score;
+                heart.remove();
+            });
+            
+            setTimeout(() => heart.remove(), 3000);
+        }
+        setInterval(createHeart, 1000);
+    </script>
+</body>
+</html>
